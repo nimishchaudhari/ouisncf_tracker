@@ -52,5 +52,5 @@ print("Cheapest Tickets:")
 print(cheapest_ticket(
     "Paris","Nantes",
     "15/06/2020 10:00",
-    "27/06/2020 08:00"
+    "20/06/2020 08:00"
 ))
