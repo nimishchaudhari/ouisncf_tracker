@@ -54,4 +54,9 @@ def cheapest_ticket(dept_stat,arr_stat,from_date,to_date):
     for i in min_prices:
             cheapest_bookings.append(data[i])
     cheapest_bookings.insert(0,head)
-    return str(cheapest_bookings)
+    def print_op(list):
+        x = ""
+        for i in list:
+            x = x + str(i) + '\n'
+        return x
+    return str(print_op(cheapest_bookings))
