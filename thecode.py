@@ -2,6 +2,8 @@
 import trainline
 import csv
 
+
+results = 0
 def find_train(dept_stat,arr_stat,from_date,to_date):
     results = trainline.search(
 	departure_station=dept_stat,
@@ -11,7 +13,10 @@ def find_train(dept_stat,arr_stat,from_date,to_date):
     x = results.csv()
     data = x.split("\n")
     data = [i.split(";") for i in data]
-    return str(data)
+    x=""
+    for i in data:
+        x = x + str(i) + '\n'
+    return str(x)
 
 def cheapest_ticket(dept_stat,arr_stat,from_date,to_date):
     results = trainline.search(
@@ -35,7 +40,7 @@ def cheapest_ticket(dept_stat,arr_stat,from_date,to_date):
         if min_val == prices[i]:
             min_prices.append(i)
 
-    print(min_prices) # Giving me the array locations ofthe minimum prices found
+    #print(min_prices) # Giving me the array locations ofthe minimum prices found
 
     cheapest_bookings = []
     for i in min_prices:
@@ -48,9 +53,18 @@ def cheapest_ticket(dept_stat,arr_stat,from_date,to_date):
         return x
     return str(print_op(cheapest_bookings))
 
-print("Cheapest Tickets:")
-print(cheapest_ticket(
-    "Paris","Nantes",
-    "15/06/2020 10:00",
-    "20/06/2020 08:00"
-))
+
+from sys import argv
+if len(argv)!=5:
+    print("Expected 4 arguments,got less or more!")
+    print("Cheapest Tickets:")
+    print(cheapest_ticket(
+        "Bruxelles","Paris",
+        "15/06/2020 10:00",
+        "20/06/2020 08:00"
+    ))
+else:
+    print(" Finding travel itineraries from {} to {} please wait".format(argv[1],argv[2]))
+    print(find_train(argv[1],argv[2],argv[3],argv[4]))
+    print(" Cheapest ones are here: ")
+    print(cheapest_ticket(argv[1],argv[2],argv[3],argv[4]))
