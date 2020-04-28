@@ -1,4 +1,4 @@
-# OuiSNCF Price Tracker
+# Trainline Price Tracker
 
 This Price Finder shows the possible transits based on the entered dates.
 It uses trainline [API Wrapper]{https://github.com/tducret/trainline-python} to find the data.
