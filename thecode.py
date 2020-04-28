@@ -1,20 +1,7 @@
 # Code for Parsing
 import trainline
 import csv
-#import openpyxl
 
-results = trainline.search(
-	departure_station="Toulouse",
-	arrival_station="Bordeaux",
-	from_date="15/06/2020 08:00",
-	to_date="17/06/2020 21:00")
-# x = results.csv()
-# data = x.split("\n")
-# data = [i.split(";") for i in data]
-# #print(len(data),data)
-# op = []
-# for i in data:
-#    print(str(j)+"\t" for j in i)
 def find_train(dept_stat,arr_stat,from_date,to_date):
     results = trainline.search(
 	departure_station=dept_stat,
@@ -60,3 +47,10 @@ def cheapest_ticket(dept_stat,arr_stat,from_date,to_date):
             x = x + str(i) + '\n'
         return x
     return str(print_op(cheapest_bookings))
+
+print("Cheapest Tickets:")
+print(cheapest_ticket(
+    "Paris","Nantes",
+    "15/06/2020 10:00",
+    "27/06/2020 08:00"
+))
