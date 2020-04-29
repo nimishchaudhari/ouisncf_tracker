@@ -3,6 +3,11 @@ app = Flask(__name__)
 from flask import request
 import thecode as tc
 
+def index(request):
+    r = requests.get('http://httpbin.org/status/418')
+    print(r.text)
+    return HttpResponse('<pre>' + r.text + '</pre>')
+
 @app.route('/')
 def hello():
     return "Hello World!"
