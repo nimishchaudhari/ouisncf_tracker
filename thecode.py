@@ -54,17 +54,17 @@ def cheapest_ticket(dept_stat,arr_stat,from_date,to_date):
     return str(print_op(cheapest_bookings))
 
 
-from sys import argv
-if len(argv)!=5:
-    print("Expected 4 arguments,got less or more!")
-    print("Cheapest Tickets:")
-    print(cheapest_ticket(
-        "Bruxelles","Paris",
-        "15/06/2020 10:00",
-        "20/06/2020 08:00"
-    ))
-else:
-    print(" Finding travel itineraries from {} to {} please wait".format(argv[1],argv[2]))
-    print(find_train(argv[1],argv[2],argv[3],argv[4]))
-    print(" Cheapest ones are here: ")
-    print(cheapest_ticket(argv[1],argv[2],argv[3],argv[4]))
+# from sys import argv
+# if len(argv)!=5:
+#     print("Expected 4 arguments,got less or more!")
+#     print("Cheapest Tickets:")
+#     print(cheapest_ticket(
+#         "Bruxelles","Paris",
+#         "15/06/2020 10:00",
+#         "20/06/2020 08:00"
+#     ))
+# else:
+#     print(" Finding travel itineraries from {} to {} please wait".format(argv[1],argv[2]))
+#     print(find_train(argv[1],argv[2],argv[3],argv[4]))
+#     print(" Cheapest ones are here: ")
+#     print(cheapest_ticket(argv[1],argv[2],argv[3],argv[4]))
