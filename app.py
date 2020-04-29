@@ -3,13 +3,19 @@ app = Flask(__name__)
 from flask import request
 import thecode as tc
 import requests
-
+from chat import render_template
 
 
 
 @app.route('/')
 def hello():
     return "Hello World!"
+
+@app.route('/test/')
+def hellow():
+    return render_template('index.html')
+
+
 
 @app.route('/train', methods=['POST'])
 def findtrain():
@@ -23,6 +29,7 @@ def findtrain():
 
 
 @app.route('/cheapest_train', methods=['POST'])
+
 def cheapest_train():
     return tc.cheapest_ticket(request.form['Dept_stat'],
                     request.form['Arr_stat'],
