@@ -2,6 +2,10 @@
 import trainline
 import csv
 
+class data:
+    data = []
+
+data_obj = data()
 
 results = 0
 def find_train(dept_stat,arr_stat,from_date,to_date):
@@ -13,21 +17,14 @@ def find_train(dept_stat,arr_stat,from_date,to_date):
     x = results.csv()
     data = x.split("\n")
     data = [i.split(";") for i in data]
+    data_obj.data = data
     x=""
     for i in data:
         x = x + str(i) + '\n'
     return str(x)
 
 def cheapest_ticket(dept_stat,arr_stat,from_date,to_date):
-    results = trainline.search(
-    departure_station=dept_stat,
-    arrival_station=arr_stat,
-    from_date=from_date,
-    to_date=to_date)
-    x = results.csv()
-    data = x.split("\n")
-    data = [i.split(";") for i in data]
-    head = data.pop(0)
+    head = data_obj.data.pop(0)
     data.pop(-1)
     prices = []
     for i in data:                      #To make all the euro values integer
@@ -54,17 +51,21 @@ def cheapest_ticket(dept_stat,arr_stat,from_date,to_date):
     return str(print_op(cheapest_bookings))
 
 
-# from sys import argv
-# if len(argv)!=5:
-#     print("Expected 4 arguments,got less or more!")
-#     print("Cheapest Tickets:")
-#     print(cheapest_ticket(
-#         "Bruxelles","Paris",
-#         "15/06/2020 10:00",
-#         "20/06/2020 08:00"
-#     ))
-# else:
-#     print(" Finding travel itineraries from {} to {} please wait".format(argv[1],argv[2]))
-#     print(find_train(argv[1],argv[2],argv[3],argv[4]))
-#     print(" Cheapest ones are here: ")
-#     print(cheapest_ticket(argv[1],argv[2],argv[3],argv[4]))
+from sys import argv
+if len(argv)!=5:
+    print("Expected 4 arguments,got less or more!")
+    print("Cheapest Tickets:")
+    print(cheapest_ticket(
+        "Bruxelles","Paris",
+        "15/06/2020 10:00",
+        "20/06/2020 08:00"
+    ))
+else:
+    print(" Finding travel itineraries from {} to {} please wait".format(argv[1],argv[2]))
+    print(find_train(argv[1],argv[2],argv[3],argv[4]))
+    print(" Cheapest ones are here: ")
+    print(cheapest_ticket(argv[1],argv[2],argv[3],argv[4]))
+
+
+    #EG:
+    #   Toulouse Perpignan "15/06/2020 10:00" "20/06/2020 08:00"
