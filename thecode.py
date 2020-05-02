@@ -25,7 +25,8 @@ def find_train(dept_stat,arr_stat,from_date,to_date):
 
 def cheapest_ticket(dept_stat,arr_stat,from_date,to_date):
     head = data_obj.data.pop(0)
-    data.pop(-1)
+    data_obj.data.pop(-1)
+    data = data_obj.data
     prices = []
     for i in data:                      #To make all the euro values integer
         price = i[4].split(",")
@@ -68,4 +69,4 @@ else:
 
 
     #EG:
-    #   Toulouse Perpignan "15/06/2020 10:00" "20/06/2020 08:00"
+    #   Toulouse Perpignan "01/07/2020 10:00" "10/07/2020 15:00"
